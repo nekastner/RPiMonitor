@@ -2,6 +2,7 @@
   <dictionary name="project">
     <words>
       <w>Raspi</w>
+      <w>raspi</w>
     </words>
   </dictionary>
 </component>
