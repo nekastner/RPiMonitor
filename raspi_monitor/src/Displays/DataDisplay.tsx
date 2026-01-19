@@ -1,15 +1,14 @@
 import React from "react";
-import {RaspiJSONData} from "../Persistence/DataFetch";
 
 interface Props {
-    data: RaspiJSONData | null
+    data: any
 }
 
 const DataDisplay: React.FC<Props> = ({ data }) => {
     return (
         <div>
-            <p>Temperature: { data?.temp }</p>
-            <p>Cooling state: { data?.cool }</p>
+            <p>Temperature: { data ? data.temp / 1_000 : "error" }</p>
+            <p>Cooling state: { data ? data.cool : "error" }</p>
         </div>
     );
 }

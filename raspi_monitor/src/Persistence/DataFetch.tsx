@@ -1,12 +1,7 @@
 import React from "react";
 
-export interface RaspiJSONData {
-    temp: string,
-    cool: string
-}
-
 export interface DataFetch {
-    json: RaspiJSONData | null,
+    json: any,
     error: Error | null,
     loading: boolean
 }
@@ -16,7 +11,7 @@ export function usePolling(
     interval: number = 1_000
 ): DataFetch {
 
-    const [json, setJson] = React.useState<RaspiJSONData | null>(null);
+    const [json, setJson] = React.useState<any>(null);
     const [error, setError] = React.useState<Error | null>(null);
     const [loading, setLoading] = React.useState<boolean>(true);
 
@@ -30,7 +25,8 @@ export function usePolling(
             if (!isMounted) return;
             try {
                 const response = await fetch(url);
-                setJson(await response.json());
+                const data = await response.json();
+                setJson(data);
                 setError(null);
             }
             catch (err) {
