@@ -12,7 +12,6 @@ const App: React.FC = () => {
         <div className="App">
             <header className="App-header">
                 <h1>Raspi Monitor</h1>
-                <p>Debug</p>
                 <DataDisplay data={ dataFetch.json } />
                 <ErrorDisplay error={ dataFetch.error } />
             </header>
