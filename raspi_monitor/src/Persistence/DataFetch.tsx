@@ -39,7 +39,7 @@ export function usePolling(
             }
         };
 
-        let pollingPromise = runPollingAsync();
+        runPollingAsync();
 
         return (): void => {
             isMounted = false;
