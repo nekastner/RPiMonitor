@@ -11,7 +11,7 @@ export function FetchData(
     interval: number = 1_000
 ): FetchedData {
 
-    const [json, setJson] = React.useState<any>(null);
+    const [response, setresponse] = React.useState<any>(null);
     const [error, setError] = React.useState<Error | null>(null);
     const [loading, setLoading] = React.useState<boolean>(true);
 
@@ -26,10 +26,10 @@ export function FetchData(
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                setJson(data);
+                setresponse(data);
                 setError(null);
             } catch (err) {
-                setJson(null);
+                setresponse(null);
                 setError(err instanceof Error ? err : new Error(String(err)));
             } finally {
                 setLoading(false);
@@ -45,5 +45,5 @@ export function FetchData(
         };
     }, [ url, interval]);
 
-    return {json, error, loading};
+    return {json: response, error, loading};
 }

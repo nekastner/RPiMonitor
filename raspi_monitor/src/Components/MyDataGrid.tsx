@@ -12,6 +12,8 @@ import {
     TableCellLayout
 } from "@fluentui/react-components";
 
+import "./MyDataGrid.css";
+
 interface Props {
     data: any;
 }
@@ -43,8 +45,7 @@ const MyDataGrid: React.FC<Props> = ({ data }) => {
     ];
 
     return (
-        <DataGrid items={items} columns={columns} getRowId={(item) => item.id} >
-
+        <DataGrid id="grid" items={items} columns={columns} getRowId={(item) => item.id}>
             <DataGridHeader>
                 <DataGridRow>
                     {({ renderHeaderCell }) => (
@@ -56,7 +57,6 @@ const MyDataGrid: React.FC<Props> = ({ data }) => {
                     )}
                 </DataGridRow>
             </DataGridHeader>
-
             <DataGridBody<Item>>
                 {({ item, rowId }) => (
                     <DataGridRow<Item> key={rowId}>
@@ -70,7 +70,6 @@ const MyDataGrid: React.FC<Props> = ({ data }) => {
                     </DataGridRow>
                 )}
             </DataGridBody>
-
         </DataGrid>
     );
 }

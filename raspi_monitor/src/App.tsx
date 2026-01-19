@@ -13,8 +13,10 @@ const App: React.FC = () => {
             <header style={{ margin: "5%", textAlign: "center" }}>
                 <h1>Raspi Monitor</h1>
             </header>
-            <main>
-                <MyDataGrid data={ dataFetch.json } />
+            <main style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ width: "33%", margin: "auto" }}>
+                    <MyDataGrid data={ dataFetch.json } />
+                </div>
                 <ErrorDisplay error={ dataFetch.error } />
             </main>
         </div>
