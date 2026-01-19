@@ -1,15 +1,15 @@
 import React from "react";
 
-export interface DataFetch {
+export interface FetchedData {
     json: any,
     error: Error | null,
     loading: boolean
 }
 
-export function usePolling(
+export function FetchData(
     url: string,
     interval: number = 1_000
-): DataFetch {
+): FetchedData {
 
     const [json, setJson] = React.useState<any>(null);
     const [error, setError] = React.useState<Error | null>(null);
@@ -28,24 +28,22 @@ export function usePolling(
                 const data = await response.json();
                 setJson(data);
                 setError(null);
-            }
-            catch (err) {
+            } catch (err) {
                 setJson(null);
                 setError(err instanceof Error ? err : new Error(String(err)));
-            }
-            finally {
+            } finally {
                 setLoading(false);
                 timerRef.current = setTimeout(runPollingAsync, interval);
             }
         };
 
-        runPollingAsync();
+        runPollingAsync().then(() => { });
 
         return (): void => {
             isMounted = false;
             clearTimeout(timerRef.current);
         };
-    }, [url, interval]);
+    }, [ url, interval]);
 
-    return { json, error, loading };
+    return {json, error, loading};
 }

@@ -1,20 +1,22 @@
 import React from "react";
-import "./App.css";
-import {DataFetch, usePolling} from "./Persistence/DataFetch";
-import ErrorDisplay from "./Displays/ErrorDisplay";
-import DataDisplay from "./Displays/DataDisplay";
+
+import {FetchedData, FetchData} from "./Persistence/FetchedData";
+import ErrorDisplay from "./Components/ErrorDisplay";
+import MyDataGrid from "./Components/MyDataGrid";
 
 const App: React.FC = () => {
 
-    const dataFetch: DataFetch = usePolling("http://raspi:8000");
+    const dataFetch: FetchedData = FetchData("http://raspi:8000");
 
     return (
-        <div className="App">
-            <header className="App-header">
+        <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+            <header style={{ margin: "5%", textAlign: "center" }}>
                 <h1>Raspi Monitor</h1>
-                <DataDisplay data={ dataFetch.json } />
-                <ErrorDisplay error={ dataFetch.error } />
             </header>
+            <main>
+                <MyDataGrid data={ dataFetch.json } />
+                <ErrorDisplay error={ dataFetch.error } />
+            </main>
         </div>
     );
 }
