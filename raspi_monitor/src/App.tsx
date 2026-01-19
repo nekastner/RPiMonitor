@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
-import {DataFetch, usePolling} from "./DataFetch";
+import {DataFetch, usePolling} from "./Persistence/DataFetch";
+import ErrorDisplay from "./Displays/ErrorDisplay";
+import DataDisplay from "./Displays/DataDisplay";
 
 const App: React.FC = () => {
 
@@ -10,8 +12,8 @@ const App: React.FC = () => {
         <div className="App">
             <header className="App-header">
                 <h1>Raspi Monitor</h1>
-                <p>Temperature: { dataFetch.json?.temp }</p>
-                <p>Cooling state: { dataFetch.json?.cool }</p>
+                <DataDisplay data={ dataFetch.json } />
+                <ErrorDisplay error={ dataFetch.error } />
             </header>
         </div>
     );
