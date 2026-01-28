@@ -1,6 +1,6 @@
 import React from "react";
 
-import {FetchedData, FetchData} from "./Persistence/FetchedData";
+import { FetchedData, FetchData } from "./Persistence/FetchedData";
 import ErrorDisplay from "./Components/ErrorDisplay";
 import MyDataGrid from "./Components/MyDataGrid";
 
