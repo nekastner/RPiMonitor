@@ -6,7 +6,7 @@ import MyDataGrid from "./Components/MyDataGrid";
 
 const App: React.FC = () => {
 
-    const dataFetch: FetchedData = FetchData("http://raspi:8000");
+    const dataFetch: FetchedData = FetchData("http://raspi/monitor/api");
 
     return (
         <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
