@@ -1,7 +1,8 @@
 import React from "react";
+import type {JSONResponse} from "../Models/JSONResponse.ts";
 
 export interface FetchedData {
-    json: any,
+    json: JSONResponse | null,
     error: Error | null,
     loading: boolean
 }
@@ -11,7 +12,7 @@ export function FetchData(
     interval: number = 1_000
 ): FetchedData {
 
-    const [response, setresponse] = React.useState<any>(null);
+    const [response, setResponse] = React.useState<JSONResponse | null>(null);
     const [error, setError] = React.useState<Error | null>(null);
     const [loading, setLoading] = React.useState<boolean>(true);
 
@@ -26,10 +27,10 @@ export function FetchData(
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                setresponse(data);
+                setResponse(data);
                 setError(null);
             } catch (err) {
-                setresponse(null);
+                setResponse(null);
                 setError(err instanceof Error ? err : new Error(String(err)));
             } finally {
                 setLoading(false);

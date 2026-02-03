@@ -1,7 +1,6 @@
 import React from "react";
 
-import { FetchedData, FetchData } from "./Persistence/FetchedData";
-import ErrorDisplay from "./Components/ErrorDisplay";
+import {type FetchedData, FetchData } from "./Persistence/FetchedData";
 import MyDataGrid from "./Components/MyDataGrid";
 
 const App: React.FC = () => {
@@ -17,7 +16,6 @@ const App: React.FC = () => {
                 <div style={{ width: "33%", margin: "auto" }}>
                     <MyDataGrid data={ dataFetch.json } />
                 </div>
-                <ErrorDisplay error={ dataFetch.error } />
             </main>
         </div>
     );

@@ -8,14 +8,16 @@ import {
     DataGridCell,
     DataGrid,
     createTableColumn,
-    TableColumnDefinition,
+    type TableColumnDefinition,
     TableCellLayout
 } from "@fluentui/react-components";
 
 import "./MyDataGrid.css";
 
+import type {JSONResponse} from "../Models/JSONResponse.ts";
+
 interface Props {
-    data: any;
+    data: JSONResponse | null;
 }
 
 interface Item {
@@ -27,8 +29,8 @@ interface Item {
 const MyDataGrid: React.FC<Props> = ({ data }) => {
 
     const items: Item[] = [
-        { id: 1, title: "Temp", value: (data ? data.temp / 1_000 : "_") + "°C" },
-        { id: 2, title: "Cool", value: (data ? data.cool : "_") }
+        { id: 1, title: "Temp", value: String(data ? data.temp / 1_000 : "_") + "°C" },
+        { id: 2, title: "Cool", value: String(data ? data.cool : "_") }
     ];
 
     const columns: TableColumnDefinition<Item>[] = [
