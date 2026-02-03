@@ -1,11 +1,12 @@
 import React from "react";
 
-import {type FetchedData, FetchData } from "./Persistence/FetchedData";
+import {FetchData } from "./Persistence/FetchData.ts";
 import MyDataGrid from "./Components/MyDataGrid";
+import type {JSONResponse} from "./Models/JSONResponse.ts";
 
 const App: React.FC = () => {
 
-    const dataFetch: FetchedData = FetchData("http://raspi/monitor/api");
+    const dataFetch: JSONResponse | null = FetchData("http://raspi/monitor/api", 1_000);
 
     return (
         <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
@@ -14,7 +15,7 @@ const App: React.FC = () => {
             </header>
             <main style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ width: "33%", margin: "auto" }}>
-                    <MyDataGrid data={ dataFetch.json } />
+                    <MyDataGrid data={ dataFetch } />
                 </div>
             </main>
         </div>
