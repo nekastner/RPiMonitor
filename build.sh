@@ -1,5 +1,5 @@
 #!/bin/bash
 
-npm run dist || exit
+npm run build || exit
 sudo rm -rf /var/www/html/raspi-monitor
 sudo mv dist /var/www/html/raspi-monitor
