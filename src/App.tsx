@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 
 import {FetchData } from "./Persistence/FetchData.ts";
 import MyDataGrid from "./Components/MyDataGrid";

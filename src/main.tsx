@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { FluentProvider, webDarkTheme } from "@fluentui/react-components";
+import "./index.css";
 
 import App from "./App";
 
@@ -11,8 +11,6 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
     <React.StrictMode>
-        <FluentProvider theme={webDarkTheme} style={{ minHeight: "100vh" }}>
-            <App />
-        </FluentProvider>
+        <App />
     </React.StrictMode>
 );
