@@ -19,8 +19,11 @@ const MyDataGrid: React.FC<Props> = ({ data }) => {
             </thead>
             <tbody>
                 <tr>
-                    <td>{ String(data ? data.temp / 1_000 : "_") + "°C" }</td>
-                    <td>{ String(data ? data.cool : "_") }</td>
+                    {
+                        // TODO: set err in fetch data
+                    }
+                    <td>{ String(data ? data.temp / 1_000 : "err") + "°C" }</td>
+                    <td>{ String(data ? data.cool : "err") }</td>
                 </tr>
             </tbody>
         </table>
