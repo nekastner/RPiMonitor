@@ -7,8 +7,7 @@ import type {JSONResponse} from "./Models/JSONResponse.ts";
 
 const App: React.FC = () => {
 
-    // TODO: fix cors
-    const dataFetch: JSONResponse | null = FetchData("http://raspi/monitor/api", 1_000); // http://raspi:5173
+    const dataFetch: JSONResponse | null = FetchData("http://raspi/monitor/api", 1_000);
     // TODO: escalate to error screen if fetch failed
 
     return (
